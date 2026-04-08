@@ -475,9 +475,9 @@ export default function StrategyImplementationInfrastructure() {
         }
         .si-root a { color: inherit; text-decoration: none; }
         .si-shell {
-          width: min(1240px, calc(100% - 32px));
+          width: min(1180px, calc(100% - 40px));
           margin: 0 auto;
-          padding: 24px 0 80px;
+          padding: 20px 0 120px;
         }
         .si-hero {
           border: 1px solid var(--line);
@@ -489,7 +489,7 @@ export default function StrategyImplementationInfrastructure() {
           align-items: flex-start;
           justify-content: space-between;
           gap: 16px;
-          margin-bottom: 18px;
+          margin-bottom: 14px;
         }
         .si-course-meta {
           font-size: 12px;
@@ -497,22 +497,32 @@ export default function StrategyImplementationInfrastructure() {
           text-transform: uppercase;
           color: var(--muted);
         }
-        .si-mode-switch {
+        .si-fab-switch {
+          position: fixed;
+          right: max(14px, env(safe-area-inset-right));
+          bottom: max(14px, env(safe-area-inset-bottom));
+          z-index: 40;
           display: inline-flex;
-          border: 1px solid var(--line);
-          background: var(--paper);
-          overflow: hidden;
-          flex-shrink: 0;
+          align-items: center;
+          gap: 4px;
+          padding: 4px;
+          border: 1px solid rgba(91, 101, 112, 0.18);
+          background: rgba(247, 242, 231, 0.92);
+          backdrop-filter: blur(12px);
+          box-shadow: 0 8px 24px rgba(31, 41, 51, 0.08);
         }
-        .si-mode-switch button {
+        .si-fab-switch button {
+          width: 32px;
+          height: 32px;
           border: 0;
           background: transparent;
-          padding: 8px 12px;
-          font-size: 12px;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.04em;
           cursor: pointer;
           color: var(--muted);
         }
-        .si-mode-switch button.si-active {
+        .si-fab-switch button.si-active {
           background: var(--teal);
           color: #fff;
         }
@@ -526,9 +536,10 @@ export default function StrategyImplementationInfrastructure() {
         }
         .si-subtitle {
           margin: 10px 0 0;
-          max-width: 960px;
+          max-width: 68ch;
           color: var(--muted);
-          font-size: 16px;
+          font-size: 15.5px;
+          line-height: 1.65;
         }
         .si-hero-grid {
           display: grid;
@@ -538,27 +549,32 @@ export default function StrategyImplementationInfrastructure() {
         }
         .si-hero-copy {
           display: grid;
-          gap: 16px;
+          gap: 14px;
+          min-width: 0;
         }
         .si-callout {
           border-left: 4px solid var(--plum);
           padding-left: 14px;
           margin: 0;
-          font-size: 18px;
+          font-size: 17px;
+          line-height: 1.6;
+          max-width: 56ch;
         }
         .si-callout strong { color: var(--plum); }
         .si-summary-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 12px;
+          gap: 10px;
+          min-width: 0;
         }
         .si-summary-card {
           border: 1px solid var(--line);
-          padding: 14px;
-          min-height: 112px;
+          padding: 12px;
+          min-height: 96px;
           display: grid;
           align-content: start;
-          gap: 8px;
+          gap: 6px;
+          min-width: 0;
         }
         .si-summary-card.si-tone-teal { background: var(--soft-teal); }
         .si-summary-card.si-tone-plum { background: var(--soft-plum); }
@@ -566,47 +582,59 @@ export default function StrategyImplementationInfrastructure() {
         .si-summary-card.si-tone-amber { background: var(--soft-amber); }
         .si-summary-value {
           font-family: "Source Serif 4", Georgia, serif;
-          font-size: 36px;
+          font-size: 32px;
           line-height: 1;
         }
-        .si-summary-label { font-size: 13px; color: var(--muted); }
+        .si-summary-label {
+          font-size: 12px;
+          line-height: 1.5;
+          color: var(--muted);
+          overflow-wrap: anywhere;
+        }
         .si-sticky {
           position: sticky;
           top: 0;
           z-index: 25;
-          background: rgba(252, 250, 242, 0.92);
+          background: rgba(252, 250, 242, 0.94);
           backdrop-filter: blur(10px);
           border-bottom: 1px solid var(--line);
-          margin-top: 20px;
+          margin-top: 16px;
         }
         .si-sticky-inner {
-          width: min(1240px, calc(100% - 32px));
+          width: min(1180px, calc(100% - 40px));
           margin: 0 auto;
-          padding: 10px 0;
+          padding: 8px 0;
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 8px;
           overflow-x: auto;
+          scrollbar-width: none;
         }
+        .si-sticky-inner::-webkit-scrollbar { display: none; }
         .si-nav-link {
           white-space: nowrap;
           border: 1px solid var(--line);
-          padding: 8px 12px;
-          background: rgba(255,255,255,0.5);
-          font-size: 13px;
+          padding: 6px 10px;
+          background: rgba(255,255,255,0.56);
+          font-size: 12px;
+          line-height: 1.2;
         }
         .si-content {
           display: grid;
-          gap: 22px;
-          margin-top: 22px;
+          gap: 18px;
+          margin-top: 18px;
         }
         .si-section {
           border: 1px solid var(--line);
           background: rgba(255,255,255,0.38);
-          padding: 22px;
-          scroll-margin-top: 70px;
+          padding: 20px;
+          scroll-margin-top: 64px;
+          min-width: 0;
         }
-        .si-section-head { margin-bottom: 18px; }
+        .si-section-head {
+          margin-bottom: 16px;
+          max-width: 72ch;
+        }
         .si-section-title-row {
           display: flex;
           align-items: flex-start;
@@ -632,21 +660,23 @@ export default function StrategyImplementationInfrastructure() {
         }
         .si-h2 {
           margin: 0;
-          font-size: clamp(22px, 2.3vw, 32px);
-          line-height: 1.15;
+          font-size: clamp(21px, 2.1vw, 30px);
+          line-height: 1.16;
           font-family: "Source Serif 4", Georgia, serif;
         }
         .si-h3 {
           margin: 0;
-          font-size: 20px;
-          line-height: 1.2;
+          font-size: 18px;
+          line-height: 1.25;
           font-family: "Source Serif 4", Georgia, serif;
+          overflow-wrap: anywhere;
         }
         .si-h4 {
           margin: 0;
-          font-size: 17px;
-          line-height: 1.2;
+          font-size: 16px;
+          line-height: 1.28;
           font-family: "Source Serif 4", Georgia, serif;
+          overflow-wrap: anywhere;
         }
         .si-lead,
         .si-body,
@@ -656,15 +686,31 @@ export default function StrategyImplementationInfrastructure() {
         .si-table th,
         .si-small {
           color: var(--muted);
+          overflow-wrap: anywhere;
+          word-break: normal;
+          hyphens: auto;
         }
-        .si-lead { margin: 10px 0 0; max-width: 920px; }
-        .si-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-        .si-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-        .si-grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+        .si-body,
+        .si-bullets li,
+        .si-table,
+        .si-small {
+          font-size: 14.5px;
+          line-height: 1.65;
+        }
+        .si-lead {
+          margin: 10px 0 0;
+          max-width: 68ch;
+          font-size: 15px;
+          line-height: 1.68;
+        }
+        .si-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+        .si-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+        .si-grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
         .si-card {
           border: 1px solid var(--line);
-          padding: 16px;
+          padding: 14px;
           background: rgba(255,255,255,0.52);
+          min-width: 0;
         }
         .si-tone-teal { background: var(--soft-teal); }
         .si-tone-plum { background: var(--soft-plum); }
@@ -676,7 +722,8 @@ export default function StrategyImplementationInfrastructure() {
           align-items: center;
           justify-content: space-between;
           gap: 10px;
-          margin-bottom: 12px;
+          margin-bottom: 10px;
+          min-width: 0;
         }
         .si-driver-icon {
           width: 34px;
@@ -702,7 +749,7 @@ export default function StrategyImplementationInfrastructure() {
         .si-process-step {
           min-width: 0;
           border: 1px solid var(--line);
-          padding: 14px;
+          padding: 12px;
           background: rgba(255,255,255,0.54);
         }
         .si-process-index {
@@ -764,11 +811,17 @@ export default function StrategyImplementationInfrastructure() {
         }
         .si-bridge-text { margin-top: 8px; font-weight: 600; }
         .si-failure-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-        .si-failure-title { font-size: 14px; min-height: 54px; }
+        .si-failure-title {
+          font-size: 13.5px;
+          line-height: 1.55;
+          min-height: 46px;
+          overflow-wrap: anywhere;
+        }
         .si-failure-result {
           font-family: "Source Serif 4", Georgia, serif;
-          font-size: 26px;
-          margin-top: 10px;
+          font-size: 24px;
+          line-height: 1.1;
+          margin-top: 8px;
         }
         .si-badge {
           display: inline-flex;
@@ -791,23 +844,30 @@ export default function StrategyImplementationInfrastructure() {
           display: inline-flex;
           align-items: center;
           border: 1px solid var(--line);
-          padding: 6px 10px;
+          padding: 5px 9px;
           font-weight: 700;
           letter-spacing: 0.04em;
           background: rgba(255,255,255,0.74);
           width: fit-content;
+          max-width: 100%;
+          overflow-wrap: anywhere;
         }
         .si-brand-sep { margin: 0 8px; color: var(--muted); }
-        .si-table-wrap { overflow-x: auto; }
+        .si-table-wrap {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
         .si-table {
           width: 100%;
           border-collapse: collapse;
-          min-width: 640px;
+          min-width: 560px;
+          font-size: 13.5px;
+          line-height: 1.55;
         }
         .si-table th,
         .si-table td {
           border: 1px solid var(--line);
-          padding: 10px 12px;
+          padding: 8px 10px;
           text-align: left;
           vertical-align: top;
           background: rgba(255,255,255,0.56);
@@ -844,11 +904,15 @@ export default function StrategyImplementationInfrastructure() {
           border: 1px dashed var(--line);
           padding: 12px;
           background: rgba(255,255,255,0.46);
+          min-width: 0;
         }
         .si-mini-note svg { flex-shrink: 0; margin-top: 2px; }
         .si-lang-grid { display: grid; gap: 6px; }
         .lang-en,
-        .lang-zh { display: block; }
+        .lang-zh {
+          display: block;
+          min-width: 0;
+        }
         .lang-zh { margin-top: 6px; color: var(--muted); }
 
         @media (max-width: 1100px) {
@@ -858,17 +922,17 @@ export default function StrategyImplementationInfrastructure() {
           .si-grid-2,
           .si-bridge-card { grid-template-columns: 1fr 1fr; }
           .si-bridge-center { grid-column: 1 / -1; order: -1; }
-          .si-summary-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+          .si-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
           .si-process-wrap { grid-template-columns: 1fr; }
           .si-process-arrow { display: none; }
           .si-flow-row { grid-template-columns: 1fr; }
-          .si-flow-line { width: 1px; height: 18px; justify-self: center; }
+          .si-flow-line { width: 1px; height: 14px; justify-self: center; }
           .si-ladder-row { grid-template-columns: 1fr; }
         }
         @media (max-width: 820px) {
-          .si-shell, .si-sticky-inner { width: min(100% - 20px, 1240px); }
-          .si-hero { padding: 18px; }
-          .si-section { padding: 18px; }
+          .si-shell, .si-sticky-inner { width: min(100% - 24px, 1180px); }
+          .si-hero { padding: 16px; }
+          .si-section { padding: 16px; }
           .si-topbar { flex-direction: column; align-items: stretch; }
           .si-hero-grid,
           .si-grid-4,
@@ -878,10 +942,32 @@ export default function StrategyImplementationInfrastructure() {
           .si-failure-grid,
           .si-bridge-card { grid-template-columns: 1fr; }
           .si-title { max-width: none; }
-          .si-callout { font-size: 17px; }
+          .si-callout { font-size: 16px; max-width: none; }
           .si-bridge-center { order: 0; }
+          .si-body,
+          .si-bullets li,
+          .si-table,
+          .si-small { font-size: 14px; }
+          .si-fab-switch button { width: 30px; height: 30px; }
+        }
+        @media (max-width: 560px) {
+          .si-shell, .si-sticky-inner { width: min(100% - 20px, 1180px); }
+          .si-content { gap: 14px; }
+          .si-section { padding: 14px; }
+          .si-summary-grid { grid-template-columns: 1fr; }
+          .si-summary-card { min-height: 0; }
+          .si-nav-link { padding: 6px 9px; font-size: 11px; }
+          .si-table { min-width: 0; }
+          .si-table th,
+          .si-table td { padding: 7px 8px; }
         }
       `}</style>
+
+      <div className="si-fab-switch" aria-label="Language mode switch">
+        <button className={mode === "en" ? "si-active" : ""} onClick={() => setMode("en")} title="English">EN</button>
+        <button className={mode === "zh" ? "si-active" : ""} onClick={() => setMode("zh")} title="中文">中</button>
+        <button className={mode === "bi" ? "si-active" : ""} onClick={() => setMode("bi")} title="Bilingual">BI</button>
+      </div>
 
       <div className="si-sticky">
         <div className="si-sticky-inner">
@@ -898,11 +984,6 @@ export default function StrategyImplementationInfrastructure() {
           <div className="si-topbar">
             <div>
               <div className="si-course-meta">STRT 6200 · Strategy Implementation · Professor Enright</div>
-            </div>
-            <div className="si-mode-switch" aria-label="Language mode switch">
-              <button className={mode === "en" ? "si-active" : ""} onClick={() => setMode("en")}>English</button>
-              <button className={mode === "zh" ? "si-active" : ""} onClick={() => setMode("zh")}>中文</button>
-              <button className={mode === "bi" ? "si-active" : ""} onClick={() => setMode("bi")}>Bilingual</button>
             </div>
           </div>
 
