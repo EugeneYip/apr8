@@ -213,6 +213,96 @@ const ceoRoles = [
   T("Handling public opinion and scrutiny", "面對公眾審視與輿論壓力"),
 ];
 
+const architectureClusters = [
+  {
+    icon: "compass",
+    tone: "teal",
+    title: T("Direction and leadership", "方向與領導"),
+    body: T(
+      "Implementation starts with a direction people can recognize, a decision logic management can defend, and leadership that can set tone and standards.",
+      "執行的起點，是一個組織能辨識的方向、一套管理層能捍衛的決策邏輯，以及能設定基調與標準的領導。"
+    ),
+    points: [
+      T("Leadership supplies direction, motivation, standards, and external credibility.", "領導力提供方向、激勵、標準，以及對外可信度。"),
+      T("Senior management still has to do strategy setting and decision making under uncertainty.", "高階管理者仍必須做策略制定，以及在不確定下做決策。"),
+      T("Succession and mentorship matter because execution depends on who carries the strategy next.", "接班與培育之所以重要，是因為執行取決於下一個承載策略的人是誰。"),
+    ],
+    chips: [T("Strategy setting", "策略制定"), T("Decision making", "決策"), T("Succession", "接班"), T("Standards", "標準")],
+    ask: T("Can the organization see one direction, one decision logic, and one standard set?", "組織是否看得見同一個方向、同一套決策邏輯，以及同一組標準？"),
+  },
+  {
+    icon: "bolt",
+    tone: "plum",
+    title: T("Delivery system", "交付系統"),
+    body: T(
+      "Execution is not whether people are busy. It is whether structure, decision rights, routines, and capabilities turn intent into repeated behavior.",
+      "執行不在於大家忙不忙，而在於結構、決策權、例行機制與能力，能否把意圖轉成可重複的行為。"
+    ),
+    points: [
+      T("Execution means knowing what to do, overcoming inertia, and getting the right things done.", "執行是知道該做甚麼、克服慣性，並把正確的事做成。"),
+      T("Organization and management decide how labor is divided, how information moves, and who gets to decide.", "組織與管理決定分工方式、資訊如何流動，以及誰有決策權。"),
+      T("Firm-level capabilities are built through systems, not through motivational language alone.", "公司層級能力是靠系統建立的，不是只靠激勵語言。"),
+    ],
+    chips: [T("Execution", "執行"), T("Structure", "結構"), T("Decision rights", "決策權"), T("Capabilities", "能力")],
+    ask: T("How large is the gap between strategic intent and day-to-day behavior?", "策略意圖與日常行為之間的落差有多大？"),
+  },
+  {
+    icon: "shield",
+    tone: "moss",
+    title: T("Control and institutional support", "控制與制度支撐"),
+    body: T(
+      "A strategy survives only if governance, policies, and firm-built institutions support it rather than quietly working against it.",
+      "一個策略能否存活，取決於治理、政策與企業自建制度是在支撐它，還是在暗中抵消它。"
+    ),
+    points: [
+      T("Governance shapes oversight, compliance burden, and the quality of strategic control.", "治理影響監督方式、合規負擔，以及策略控制品質。"),
+      T("Firm-specific policies can create support, preference, or constraint around implementation.", "企業特定政策可能為執行帶來支持、偏好或限制。"),
+      T("Firm-built institutions such as corporate universities or affiliated entities can make execution easier to scale.", "像企業大學或附屬機構這類企業自建制度，能讓執行更容易擴大。"),
+    ],
+    chips: [T("Governance", "治理"), T("Policies", "政策"), T("Institutions", "制度"), T("Review", "檢討")],
+    ask: T("Do the control and support systems reinforce the strategy or wear it down?", "控制與支撐系統是在強化策略，還是在磨損策略？"),
+  },
+];
+
+const blueprintPhases = [
+  {
+    phase: T("Before launch", "正式推動前"),
+    title: T("Assign ownership and sequence", "先定責任與先後順序"),
+    tone: "teal",
+    items: [
+      T("Who owns each major move?", "每個主要動作由誰負責？"),
+      T("What must happen first, second, and later?", "哪些事情要先做、後做、再做？"),
+    ],
+  },
+  {
+    phase: T("Build the system", "建立承載系統"),
+    title: T("Define capabilities and structure", "定義能力與結構"),
+    tone: "plum",
+    items: [
+      T("What must the organization be able to do well?", "組織必須具備哪些關鍵能力？"),
+      T("What reporting lines, decision rights, or routines must change?", "匯報線、決策權或例行機制需要怎麼改？"),
+    ],
+  },
+  {
+    phase: T("Run the strategy", "讓策略跑起來"),
+    title: T("Tie resources to control", "把資源綁到管控"),
+    tone: "moss",
+    items: [
+      T("How will budgets and operating review support the strategy?", "預算與營運檢討如何支撐策略？"),
+      T("How will management know implementation is working?", "管理層如何知道執行真的在運作？"),
+    ],
+  },
+  {
+    phase: T("Adjust", "持續調整"),
+    title: T("Define review triggers", "定義重估觸發點"),
+    tone: "amber",
+    items: [
+      T("What facts would force reassessment?", "哪些事實一出現就必須重估？"),
+      T("What will be adjusted first if the assumptions move?", "若原本假設改變，第一個要調的是甚麼？"),
+    ],
+  },
+];
+
 const processSteps = [
   {
     title: T("Analysis and diagnosis", "分析與診斷"),
@@ -357,6 +447,48 @@ function ToneCard({ tone = "teal", children, className = "" }) {
   return <div className={`si-card si-tone-${tone} ${className}`}>{children}</div>;
 }
 
+function ArchitectureCard({ item, mode }) {
+  return (
+    <ToneCard tone={item.tone} className="si-arch-card">
+      <div className="si-driver-top">
+        <div>
+          <h3 className="si-h3"><LangText text={item.title} mode={mode} /></h3>
+          <p className="si-body si-arch-body"><LangText text={item.body} mode={mode} /></p>
+        </div>
+        <span className="si-driver-icon"><Icon name={item.icon} size={18} stroke={theme.ink} /></span>
+      </div>
+      <div className="si-chip-row">
+        {item.chips.map((chip) => (
+          <span key={chip.en} className="si-chip"><LangText text={chip} mode={mode} /></span>
+        ))}
+      </div>
+      <ul className="si-bullets si-tight-list">
+        {item.points.map((point) => (
+          <li key={point.en}><LangText text={point} mode={mode} /></li>
+        ))}
+      </ul>
+      <p className="si-ask"><strong><LangText text={T("Reader question", "讀者應問")} mode={mode} />:</strong> <LangText text={item.ask} mode={mode} /></p>
+    </ToneCard>
+  );
+}
+
+function BlueprintCard({ item, mode, index }) {
+  return (
+    <ToneCard tone={item.tone} className="si-blueprint-card">
+      <div className="si-phase-top">
+        <div className="si-process-index">0{index + 1}</div>
+        <div className="si-badge"><LangText text={item.phase} mode={mode} /></div>
+      </div>
+      <h3 className="si-h4"><LangText text={item.title} mode={mode} /></h3>
+      <ul className="si-bullets si-tight-list">
+        {item.items.map((q) => (
+          <li key={q.en}><LangText text={q} mode={mode} /></li>
+        ))}
+      </ul>
+    </ToneCard>
+  );
+}
+
 function StrategyProcessDiagram({ mode }) {
   return (
     <div className="si-process-wrap">
@@ -431,13 +563,13 @@ export default function StrategyImplementationInfrastructure() {
 
   const nav = useMemo(
     () => [
-      { id: "overview", label: T("Overview", "總覽") },
-      { id: "core", label: T("Core drivers", "核心驅動因素") },
+      { id: "overview", label: T("Core idea", "核心觀念") },
+      { id: "core", label: T("Architecture", "執行架構") },
       { id: "loop", label: T("Process loop", "流程循環") },
-      { id: "control", label: T("Control system", "管控系統") },
+      { id: "control", label: T("Control fit", "管控契合") },
       { id: "cases", label: T("Case anchors", "案例錨點") },
-      { id: "application", label: T("Case application", "長案應用") },
-      { id: "evidence", label: T("Evidence ladder", "證據階梯") },
+      { id: "application", label: T("Blueprint", "應用藍圖") },
+      { id: "evidence", label: T("Evidence", "證據層級") },
     ],
     []
   );
@@ -621,13 +753,13 @@ export default function StrategyImplementationInfrastructure() {
         }
         .si-content {
           display: grid;
-          gap: 18px;
-          margin-top: 18px;
+          gap: 16px;
+          margin-top: 16px;
         }
         .si-section {
           border: 1px solid var(--line);
           background: rgba(255,255,255,0.38);
-          padding: 20px;
+          padding: 18px;
           scroll-margin-top: 64px;
           min-width: 0;
         }
@@ -704,11 +836,11 @@ export default function StrategyImplementationInfrastructure() {
           line-height: 1.68;
         }
         .si-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-        .si-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+        .si-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
         .si-grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
         .si-card {
           border: 1px solid var(--line);
-          padding: 14px;
+          padding: 13px;
           background: rgba(255,255,255,0.52);
           min-width: 0;
         }
@@ -719,12 +851,57 @@ export default function StrategyImplementationInfrastructure() {
         .si-tone-rose { background: var(--soft-rose); }
         .si-driver-top {
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           justify-content: space-between;
           gap: 10px;
-          margin-bottom: 10px;
+          margin-bottom: 4px;
           min-width: 0;
         }
+        .si-arch-card { display: grid; gap: 10px; }
+        .si-arch-body { margin: 6px 0 0; max-width: 46ch; }
+        .si-chip-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+        .si-chip {
+          display: inline-flex;
+          align-items: center;
+          padding: 4px 8px;
+          border: 1px solid var(--line);
+          background: rgba(255,255,255,0.68);
+          font-size: 11px;
+          line-height: 1.2;
+          color: var(--muted);
+        }
+        .si-tight-list { margin-top: 0; }
+        .si-tight-list li + li { margin-top: 6px; }
+        .si-kpi-strip {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 10px;
+          margin-top: 14px;
+        }
+        .si-kpi-box {
+          border: 1px solid var(--line);
+          background: rgba(255,255,255,0.58);
+          padding: 12px;
+        }
+        .si-kpi-label {
+          font-size: 11px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--muted);
+          margin-bottom: 6px;
+        }
+        .si-blueprint-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 10px;
+        }
+        .si-blueprint-card { display: grid; gap: 10px; min-height: 100%; }
+        .si-phase-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+
         .si-driver-icon {
           width: 34px;
           height: 34px;
@@ -920,7 +1097,9 @@ export default function StrategyImplementationInfrastructure() {
           .si-grid-4,
           .si-grid-3,
           .si-grid-2,
-          .si-bridge-card { grid-template-columns: 1fr 1fr; }
+          .si-bridge-card,
+          .si-blueprint-grid,
+          .si-kpi-strip { grid-template-columns: 1fr 1fr; }
           .si-bridge-center { grid-column: 1 / -1; order: -1; }
           .si-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
           .si-process-wrap { grid-template-columns: 1fr; }
@@ -940,7 +1119,9 @@ export default function StrategyImplementationInfrastructure() {
           .si-grid-2,
           .si-summary-grid,
           .si-failure-grid,
-          .si-bridge-card { grid-template-columns: 1fr; }
+          .si-bridge-card,
+          .si-blueprint-grid,
+          .si-kpi-strip { grid-template-columns: 1fr; }
           .si-title { max-width: none; }
           .si-callout { font-size: 16px; max-width: none; }
           .si-bridge-center { order: 0; }
@@ -1000,8 +1181,8 @@ export default function StrategyImplementationInfrastructure() {
                   <LangText
                     mode={mode}
                     text={T(
-                      "A reader-facing, evidence-tiered guide to what this session is really about, what most summaries miss, and how to carry the logic into long-case recommendations.",
-                      "一份面向讀者、按證據層級整理的導覽，聚焦這堂課真正的主題、多數整理常漏掉的部分，以及如何把這套邏輯帶進長案建議。"
+                      "A reader-facing guide to what this session is really about, what most summaries miss, and how to carry the logic into long-case recommendations.",
+                      "一份面向讀者的導覽，聚焦這堂課真正的主題、多數整理常漏掉的部分，以及如何把這套邏輯帶進長案建議。"
                     )}
                   />
                 </p>
@@ -1046,11 +1227,11 @@ export default function StrategyImplementationInfrastructure() {
         <main className="si-content">
           <section className="si-section" id="overview">
             <SectionTitle
-              eyebrow="Session reading"
-              title={T("What the session is really doing", "這堂課真正正在做的事")}
+              eyebrow="Core idea"
+              title={T("What the session is really teaching", "這堂課真正要教的核心") }
               body={T(
-                "This session functions as the course’s return to the firm-level drivers beyond SPARK. It pulls the class from analysis alone into the problem of organizational carry-through.",
-                "這堂課可以理解為課程重新拉回 SPARK 之外的公司層級驅動因素，把討論從單純分析，拉向組織如何把策略真正做出來。"
+                "The session moves from having a recommendation to carrying a recommendation. That is the difference between analysis that sounds right and strategy that can survive inside an organization.",
+                "這堂課的重點，是把焦點從『提出建議』推進到『讓建議真正被組織承載』。這正是聽起來正確的分析，與能在組織裡存活的策略之間的差別。"
               )}
               mode={mode}
               icon="target"
@@ -1058,96 +1239,92 @@ export default function StrategyImplementationInfrastructure() {
 
             <div className="si-grid-2">
               <ToneCard tone="teal">
-                <Badge tone="teal">Core evidence</Badge>
+                <Badge tone="teal">Session 1 baseline</Badge>
                 <h3 className="si-h3" style={{ marginTop: 10 }}>
-                  <LangText text={T("Session 1 already set the standard", "Session 1 其實早已把標準講清楚")} mode={mode} />
+                  <LangText text={T("The standard was set from day one", "這個標準其實第一堂就已經設下")} mode={mode} />
                 </h3>
-                <ul className="si-bullets">
+                <ul className="si-bullets si-tight-list">
                   <li><LangText mode={mode} text={T("Strategy is not only the big picture. It also includes the detailed plans and processes that deploy and execute it.", "策略不只是 big picture，也包含讓它得以部署與執行的細部計畫與流程。")}/></li>
-                  <li><LangText mode={mode} text={T("Doing strategy well includes knowing how to make strategy work inside the organization.", "把 strategy 做好，包含知道如何讓它在組織裡真正運作。")}/></li>
-                  <li><LangText mode={mode} text={T("Cases are primary teaching vehicles, so implementation logic should be expected to show up through repeated cases, not only through lecture definitions.", "案例是主要教學載體，所以執行邏輯很可能透過反覆案例出現，而不只透過定義投影片出現。")}/></li>
+                  <li><LangText mode={mode} text={T("Doing strategy well includes knowing how to make strategy work inside the organization.", "把 strategy 做好，也包含知道如何讓它在組織裡真正運作。")}/></li>
+                  <li><LangText mode={mode} text={T("Cases are primary teaching vehicles, so implementation shows up in repeated operating situations, not only in definition slides.", "案例是主要教學載體，所以執行邏輯會反覆出現在營運情境中，不只出現在定義投影片。")}/></li>
                 </ul>
               </ToneCard>
 
               <ToneCard tone="plum">
-                <Badge tone="plum">Interpretive takeaway</Badge>
+                <Badge tone="plum">Plain-language takeaway</Badge>
                 <h3 className="si-h3" style={{ marginTop: 10 }}>
-                  <LangText text={T("What most shallow summaries miss", "多數淺層整理最常漏掉的部分")} mode={mode} />
+                  <LangText text={T("What the reader should hold onto", "讀者最應該抓住的句子")} mode={mode} />
                 </h3>
-                <ul className="si-bullets">
-                  <li><LangText mode={mode} text={T("Execution is not a motivational slogan. It is an organizational design problem.", "執行不是口號，而是組織設計問題。")}/></li>
-                  <li><LangText mode={mode} text={T("Governance is not separate from implementation. It often determines whether implementation can survive contact with reality.", "治理和執行不是分開的。它往往決定執行能不能在現實中存活。")}/></li>
-                  <li><LangText mode={mode} text={T("Budgeting and control belong inside strategy, not after strategy.", "預算與管控屬於 strategy 內部，不是 strategy 之後才補上的東西。")}/></li>
-                </ul>
+                <p className="si-body" style={{ marginTop: 10 }}>
+                  <LangText
+                    mode={mode}
+                    text={T(
+                      "A strategy is not complete when it sounds right. It is complete when the organization can carry it, control it, measure it, review it, and adjust it.",
+                      "一個策略不是在它聽起來正確時就完成，而是在組織能夠承載它、控制它、衡量它、檢視它，並在必要時調整它時，才算完成。"
+                    )}
+                  />
+                </p>
+                <div className="si-mini-note" style={{ marginTop: 12 }}>
+                  <Icon name="warning" size={18} stroke={theme.rose} />
+                  <div className="si-body">
+                    <LangText
+                      mode={mode}
+                      text={T(
+                        "The recurring risk is not weak analysis. It is incomplete strategy because the writer stops after the recommendation.",
+                        "反覆出現的風險，不是分析太弱，而是作者停在建議本身，讓策略變得不完整。"
+                      )}
+                    />
+                  </div>
+                </div>
               </ToneCard>
             </div>
-          </section>
 
-          <section className="si-section" id="core">
-            <SectionTitle
-              eyebrow="Firm-level template"
-              title={T("The company-level drivers beyond SPARK", "SPARK 之外的公司層級驅動因素")}
-              body={T(
-                "SPARK covers scope, positioning, activities, resources, and knowledge. This session’s center of gravity is the rest of the firm-level template.",
-                "SPARK 涵蓋的是 scope、positioning、activities、resources、knowledge。這堂課的重心則是公司層級模板剩下的部分。"
-              )}
-              mode={mode}
-              icon="layers"
-            />
-
-            <div className="si-grid-3">
-              {coreDrivers.map((driver) => (
-                <ToneCard key={driver.title.en} tone={driver.tone}>
-                  <div className="si-driver-top">
-                    <h3 className="si-h4"><LangText text={driver.title} mode={mode} /></h3>
-                    <span className="si-driver-icon"><Icon name={driver.icon} size={18} stroke={theme.ink} /></span>
-                  </div>
-                  <p className="si-body"><LangText text={driver.body} mode={mode} /></p>
-                  <p className="si-ask"><strong><LangText text={T("Reader question", "讀者應問")} mode={mode} />:</strong> <LangText text={driver.ask} mode={mode} /></p>
-                </ToneCard>
-              ))}
-            </div>
-
-            <div style={{ marginTop: 18 }}>
-              <BridgeDiagram mode={mode} />
-            </div>
-          </section>
-
-          <section className="si-section">
-            <SectionTitle
-              eyebrow="Failure logic"
-              title={T("Three failure formulas worth remembering cold", "值得直接背下來的三種失能公式")}
-              body={T(
-                "The course’s warning is blunt. Strategy in the real world requires analysis, decisions, action, and leadership working together. Missing one creates a recognizable failure pattern.",
-                "課程的提醒很直接。真實世界的策略需要分析、決策、行動與領導一起運作。少掉一項，就會形成可辨識的失能模式。"
-              )}
-              mode={mode}
-              icon="warning"
-            />
-
-            <div className="si-failure-grid">
+            <div className="si-kpi-strip">
               {dysfunctions.map((item) => (
-                <ToneCard key={item.title.en} tone={item.tone}>
+                <div key={item.title.en} className="si-kpi-box">
+                  <div className="si-kpi-label"><LangText text={T("Failure pattern", "失能模式")} mode={mode} /></div>
                   <div className="si-failure-title"><LangText text={item.title} mode={mode} /></div>
                   <div className="si-failure-result"><LangText text={item.result} mode={mode} /></div>
-                </ToneCard>
+                </div>
               ))}
             </div>
 
-            <div className="si-mini-note" style={{ marginTop: 16 }}>
+            <div className="si-mini-note" style={{ marginTop: 14 }}>
               <Icon name="chart" size={18} stroke={theme.amber} />
               <div className="si-body">
                 <LangText
                   mode={mode}
                   text={T(
-                    "The 95% question matters. If a 5% failure rate is acceptable in a high-stakes operating setting, what exactly are you accepting? This is why implementation rigor is framed as essential from day one.",
-                    "95% 的問題很重要。若在高風險營運場景中，5% 的失敗率也算可接受，那你到底是在接受甚麼？這就是為甚麼課程從第一天就把執行嚴謹度視為必要條件。"
+                    "The 95% question belongs here. In a serious operating setting, accepting 5% failure can mean accepting a very large strategic cost. That is why implementation rigor is framed as basic, not optional.",
+                    "95% 的問題就應該放在這裡理解。在嚴肅營運場景裡，接受 5% 失敗，可能就是接受非常高的策略成本。這就是為甚麼課程把執行嚴謹度視為基本要求，而不是可有可無。"
                   )}
                 />
               </div>
             </div>
           </section>
 
+          <section className="si-section" id="core">
+            <SectionTitle
+              eyebrow="Firm-level architecture"
+              title={T("The parts of the organization that actually carry strategy", "真正承載策略的組織部件")}
+              body={T(
+                "SPARK explains much of firm-level advantage. This session zooms in on the additional architecture that determines whether strategy can travel through the organization.",
+                "SPARK 解釋了公司層級優勢的重要部分。這堂課則進一步放大那些決定策略能否穿過整個組織的額外架構。"
+              )}
+              mode={mode}
+              icon="layers"
+            />
+
+            <div className="si-grid-3">
+              {architectureClusters.map((item) => (
+                <ArchitectureCard key={item.title.en} item={item} mode={mode} />
+              ))}
+            </div>
+
+            <div style={{ marginTop: 16 }}>
+              <BridgeDiagram mode={mode} />
+            </div>
+          </section>
           <section className="si-section" id="loop">
             <SectionTitle
               eyebrow="Strategy process"
@@ -1166,10 +1343,10 @@ export default function StrategyImplementationInfrastructure() {
           <section className="si-section" id="control">
             <SectionTitle
               eyebrow="Transmission mechanism"
-              title={T("Budgeting and control are not side details", "預算與管控不是旁支細節")}
+              title={T("Where implementation becomes managerial reality", "執行變成管理現實的地方")}
               body={T(
-                "One of the most usable claims in the course is that budgeting and control should be the transmission mechanism that ties strategy to concrete targets managers are supposed to meet or beat.",
-                "課程中最實用的一個主張，是預算與管控應該成為把策略連到管理者必須達成或超越之具體目標的傳導機制。"
+                "The course’s most usable control idea is simple. Budgeting and control are the transmission mechanism that ties strategy to targets, routines, and review.",
+                "課程中最好用的管控觀念其實很簡單。預算與管控，就是把策略連到目標、例行機制與檢討程序的傳導機制。"
               )}
               mode={mode}
               icon="checklist"
@@ -1177,67 +1354,37 @@ export default function StrategyImplementationInfrastructure() {
 
             <ControlFlow mode={mode} />
 
-            <div className="si-grid-2" style={{ marginTop: 18 }}>
+            <div className="si-grid-3" style={{ marginTop: 16 }}>
               <ToneCard tone="amber">
-                <Badge tone="amber">Why this matters</Badge>
-                <ul className="si-bullets" style={{ marginTop: 10 }}>
-                  <li><LangText mode={mode} text={T("Mechanical budgeting based only on last year’s numbers is not neutral. It can sever strategy from action.", "只按去年的數字機械編預算，並不是中性的。它可能直接切斷 strategy 與 action 的連結。")}/></li>
+                <Badge tone="amber">Why it matters</Badge>
+                <ul className="si-bullets si-tight-list" style={{ marginTop: 10 }}>
+                  <li><LangText mode={mode} text={T("Mechanical budgeting based only on last year’s numbers can sever strategy from action.", "若只按去年的數字機械編預算，strategy 與 action 的連結就可能被切斷。")}/></li>
                   <li><LangText mode={mode} text={T("A strong strategy with a weak control system is still operationally weak.", "再好的策略，如果控制系統很弱，營運上仍然是弱的。")}/></li>
-                  <li><LangText mode={mode} text={T("Control-system fit matters. Different businesses call for different control intensity and style.", "控制系統要講求契合度。不同事業需要不同強度與風格的控制。")}/></li>
                 </ul>
               </ToneCard>
 
               <ToneCard tone="moss">
-                <Badge tone="moss">What many summaries omit</Badge>
-                <div className="si-grid-2" style={{ marginTop: 10 }}>
-                  {missingPieces.map((item) => (
-                    <div key={item.title.en} className="si-card">
-                      <h3 className="si-h4"><LangText text={item.title} mode={mode} /></h3>
-                      <p className="si-body" style={{ marginTop: 8 }}><LangText text={item.body} mode={mode} /></p>
-                    </div>
-                  ))}
-                </div>
-              </ToneCard>
-            </div>
-          </section>
-
-          <section className="si-section">
-            <SectionTitle
-              eyebrow="Leadership and judgment"
-              title={T("Why CEO roles matter here", "為甚麼 CEO 角色在這堂特別重要")}
-              body={T(
-                "Chapter 3 does not treat the CEO as a celebrity topic. It uses the CEO role to show that leadership without direction is dangerous, and direction without leadership is weak.",
-                "第三章不是把 CEO 當成名人話題，而是用 CEO 角色來說明：沒有方向的領導很危險，沒有領導的方向也很脆弱。"
-              )}
-              mode={mode}
-              icon="compass"
-            />
-
-            <div className="si-grid-2">
-              <ToneCard tone="teal">
-                <Badge tone="teal">Role set</Badge>
-                <ul className="si-bullets" style={{ marginTop: 10 }}>
-                  {ceoRoles.map((role) => (
-                    <li key={role.en}><LangText text={role} mode={mode} /></li>
-                  ))}
+                <Badge tone="moss">What changes in practice</Badge>
+                <ul className="si-bullets si-tight-list" style={{ marginTop: 10 }}>
+                  <li><LangText mode={mode} text={T("Do not stop at the recommendation. Add owners, sequence, and review logic.", "不要停在建議本身，要補上負責人、順序與檢討邏輯。")}/></li>
+                  <li><LangText mode={mode} text={T("Treat governance as performance-relevant, not as a separate compliance box.", "要把治理視為直接影響績效的條件，而不是獨立的合規方框。")}/></li>
                 </ul>
               </ToneCard>
 
               <ToneCard tone="plum">
-                <Badge tone="plum">Plain-language lesson</Badge>
+                <Badge tone="plum">Reader test</Badge>
                 <p className="si-body" style={{ marginTop: 10 }}>
                   <LangText
                     mode={mode}
                     text={T(
-                      "The course is not asking whether leadership exists. It is asking whether leadership points the organization in the right direction, builds the right team, and holds the right standards while decisions are being made under uncertainty.",
-                      "課程真正要問的，不是領導力有沒有存在，而是它有沒有把組織帶向正確方向、組成正確團隊，並在不確定下做決策時守住正確標準。"
+                      "If targets, budgets, routines, and review meetings do not visibly change, has the strategy really been implemented?",
+                      "如果目標、預算、例行機制與檢討會議都沒有明顯改變，那這個策略真的算已經被執行了嗎？"
                     )}
                   />
                 </p>
               </ToneCard>
             </div>
           </section>
-
           <section className="si-section" id="cases">
             <SectionTitle
               eyebrow="Recurring case anchors"
@@ -1268,32 +1415,19 @@ export default function StrategyImplementationInfrastructure() {
           <section className="si-section" id="application">
             <SectionTitle
               eyebrow="Long-case use"
-              title={T("How to carry this into your own recommendations", "如何把這套邏輯帶進自己的建議")}
+              title={T("A cleaner blueprint for your own recommendations", "把自己的建議寫得更完整的藍圖")}
               body={T(
-                "After every major recommendation, add the operational follow-through. That is how you prevent a smart answer from becoming an incomplete one.",
-                "每一個重大建議後面，都要補上營運跟進。這就是避免一個聰明答案變成一個不完整答案的方法。"
+                "Instead of ending with one dense table, the cleaner move is to ask implementation questions in sequence. This makes gaps easier to see and easier to fix.",
+                "與其用一張很密的表收尾，更好的方式是按順序問執行問題。這樣更容易看出缺口，也更容易補強。"
               )}
               mode={mode}
               icon="bridge"
             />
 
-            <div className="si-table-wrap">
-              <table className="si-table">
-                <thead>
-                  <tr>
-                    <th><LangText mode={mode} text={T("Element", "元素")} /></th>
-                    <th><LangText mode={mode} text={T("Question to answer", "必答問題")} /></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {longCaseChecklist.map((row) => (
-                    <tr key={row.key.en}>
-                      <td><strong><LangText text={row.key} mode={mode} /></strong></td>
-                      <td><LangText text={row.ask} mode={mode} /></td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="si-blueprint-grid">
+              {blueprintPhases.map((item, index) => (
+                <BlueprintCard key={item.title.en} item={item} index={index} mode={mode} />
+              ))}
             </div>
           </section>
 
