@@ -4,10 +4,10 @@ const T = (en, zh) => ({ en, zh });
 
 const theme = {
   bg: "#FCFAF2",
-  paper: "#F7F2E7",
-  ink: "#1F2933",
-  muted: "#5B6570",
-  line: "#D8CFC0",
+  paper: "#F3F3F3",
+  ink: "#2E5C6E",
+  muted: "#5C6E74",
+  line: "#CFC5B7",
   teal: "#2E5C6E",
   plum: "#622954",
   moss: "#5E6B4C",
@@ -241,6 +241,57 @@ const leadershipExamples = [
   },
 ];
 
+const leadershipMatrix = [
+  {
+    side: T("Positive references", "正面參照"),
+    tone: "teal",
+    names: ["Gates", "Walton", "Welch", "Eisner (early)", "Bezos", "Ollila", "Morita", "Kobayashi", "Li Ka-shing", "Murdoch", "Murthy"],
+  },
+  {
+    side: T("Negative references", "反面參照"),
+    tone: "rose",
+    names: ["Lay", "Skilling", "Holmes", "Eisner (late)", "Kobayashi vulnerability"],
+  },
+];
+
+const governanceFailureSet = [
+  "Ahold", "Anglo-Irish Bank", "Arthur Andersen", "Barclays", "Barings", "BCCI", "Enron", "Tyco",
+  "Olympus", "Parmalat", "Sanlu", "Satyam", "Swissair", "Vivendi", "Waste Management", "WorldCom", "Yukos",
+];
+
+const listeningFrame = [
+  T("What strategy is actually being implemented?", "到底在執行哪一個策略？"),
+  T("What organizational changes are required to carry it?", "組織要改甚麼才能承載它？"),
+  T("Where will inertia, misalignment, or capability gaps show up?", "慣性、錯配、能力缺口最可能出現在哪裡？"),
+  T("How will management know implementation is working?", "管理層如何知道執行是否在運作？"),
+  T("What must change if the facts change?", "若事實改變，甚麼要一起調整？"),
+];
+
+const usageGuide = [
+  {
+    stage: T("Before class", "課前"),
+    tone: "teal",
+    body: T("Read the Decision, Tier 1 core, Tier 2 anchors, and the listening frame. That is enough.", "看核心判斷、第一層主體、第二層錨點，以及聽課框架。這樣就夠了。"),
+  },
+  {
+    stage: T("During class", "課中"),
+    tone: "plum",
+    body: T("Do not try to transcribe everything. Track new framework terms, recurring cases, and how implementation is tied to long-case expectations.", "不要試圖逐字抄寫所有內容。聚焦新的框架術語、重現案例，以及教授如何把執行連到長案期待。"),
+  },
+  {
+    stage: T("After class", "課後"),
+    tone: "moss",
+    body: T("Update the long-case outline immediately. Add an explicit implementation section and recheck whether structure, systems, incentives, governance, and review can carry the proposal.", "立刻更新長案大綱，補上一個明確的執行段落，並重新檢查結構、系統、誘因、治理與檢討流程是否真的能承載提案。"),
+  },
+];
+
+const outOfScope = [
+  T("Treating every case as equally likely to recur.", "把所有案例都視為同等機率重現。"),
+  T("Replacing managerial logic with generic statements like ‘execution matters’ without substance.", "用『execution 很重要』這類沒有管理實質的空話代替邏輯。"),
+  T("Confusing polished writing with complete strategy.", "把寫得漂亮誤當成策略已完整。"),
+  T("Importing marketing-course frameworks from other classes.", "把其他課的行銷框架硬搬進來。"),
+];
+
 const recurringExamples = [
   { name: T("Disney: Eisner versus Iger", "Disney：Eisner 對 Iger"), use: T("Matched-pair contrast inside the same company", "同一家公司內的配對對比") },
   { name: T("ETA and Swatch Group", "ETA 與 Swatch Group"), use: T("Control, dependence, and implementation constraints", "控制、依賴與執行限制") },
@@ -249,12 +300,6 @@ const recurringExamples = [
   { name: T("Acer and Wistron", "Acer 與 Wistron"), use: T("Organizational redesign and strategic follow-through", "組織重設與策略後續落地") },
   { name: T("GAFAM and Microsoft", "GAFAM 與 Microsoft"), use: T("Scale, control, and organizational carrying capacity", "規模、控制與組織承載力") },
   { name: T("Newell", "Newell"), use: T("Positive implementation exemplar when used carefully", "審慎使用時的正向執行範例") },
-];
-
-const useNotes = [
-  T("Before class, the highest-value reading order is Decision, Tier 1 core, Tier 2 case anchors, then the listening frame.", "課前最有價值的閱讀順序，是先看核心判斷、第一層主體、第二層案例錨點，再看聽課框架。"),
-  T("In class, do not try to transcribe everything. Track new framework terms, recurring cases, and how implementation is linked to long-case expectations.", "課中不要試圖逐字抄完所有內容。應該追蹤新的框架術語、重現案例，以及教授如何把執行連回長案期待。"),
-  T("Out of scope for this page are generic statements like ‘execution matters’ without managerial substance, and marketing-course frameworks imported from other classes.", "本頁不處理沒有管理實質的空話，例如『execution 很重要』，也不引入其他課程的行銷框架。"),
 ];
 
 const architectureClusters = [
@@ -479,6 +524,33 @@ const evidenceLadder = [
   },
 ];
 
+const deepeningReferences = [
+  {
+    source: "Prahalad and Hamel",
+    focus: T("Three organizational pathologies", "三種組織病灶"),
+    detail: T(
+      "Imprisoned resources, bounded innovation, and destructive internal competition across SBU boundaries.",
+      "被囚禁的資源、受限的創新，以及跨 SBU 邊界的破壞性內部競爭。"
+    ),
+  },
+  {
+    source: "Collis and Montgomery",
+    focus: T("Financial versus operating control", "財務控制對營運控制"),
+    detail: T(
+      "Control systems cannot be judged in the abstract. Their quality depends on fit with the firm’s resources, business mix, and managerial familiarity with the operations.",
+      "控制系統不能抽象評價。其有效性取決於它與企業資源、事業組合，以及管理者對營運熟悉度之間的契合。"
+    ),
+  },
+  {
+    source: "Newell",
+    focus: T("Positive implementation exemplar", "正向執行範例"),
+    detail: T(
+      "Useful as a confirmed positive case when personal class experience supports it, but not a replacement for the main anchors.",
+      "當個人上課記憶支持時，可作為正向範例使用，但不能取代主體案例錨點。"
+    ),
+  },
+];
+
 const sources = [
   "Session 1: The Course, slides on strategy, implementation, cases, and the basic strategy process.",
   "Strategy for the Real World, Chapter 2: Drivers of Firm Performance.",
@@ -667,7 +739,16 @@ export default function StrategyImplementationInfrastructure() {
           align-items: flex-start;
           justify-content: space-between;
           gap: 16px;
-          margin-bottom: 14px;
+          margin-bottom: 10px;
+        }
+        .si-meta-grid {
+          display: grid;
+          gap: 4px;
+        }
+        .si-header-bar {
+          height: 10px;
+          background: var(--plum);
+          margin-bottom: 18px;
         }
         .si-course-meta {
           font-size: 12px;
@@ -910,6 +991,12 @@ export default function StrategyImplementationInfrastructure() {
           flex-wrap: wrap;
           gap: 6px;
         }
+        .si-name-cloud {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          margin-top: 8px;
+        }
         .si-chip {
           display: inline-flex;
           align-items: center;
@@ -1120,6 +1207,23 @@ export default function StrategyImplementationInfrastructure() {
           display: grid;
           gap: 8px;
         }
+        .si-micro-eyebrow {
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          font-size: 11px;
+          color: var(--plum);
+          margin-bottom: 8px;
+        }
+        .si-question-grid {
+          display: grid;
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          gap: 10px;
+        }
+        .si-guide-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 12px;
+        }
         .si-mini-note {
           display: flex;
           gap: 10px;
@@ -1137,6 +1241,12 @@ export default function StrategyImplementationInfrastructure() {
           min-width: 0;
         }
         .lang-zh { margin-top: 6px; color: var(--muted); font-family: "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif; }
+        .si-source-foot {
+          margin-top: 18px;
+          border-top: 1px solid var(--line);
+          padding-top: 12px;
+          text-align: center;
+        }
 
         @media (max-width: 1100px) {
           .si-hero-grid,
@@ -1145,7 +1255,9 @@ export default function StrategyImplementationInfrastructure() {
           .si-grid-2,
           .si-bridge-card,
           .si-blueprint-grid,
-          .si-kpi-strip { grid-template-columns: 1fr 1fr; }
+          .si-kpi-strip,
+          .si-guide-grid { grid-template-columns: 1fr 1fr; }
+          .si-question-grid { grid-template-columns: 1fr 1fr 1fr; }
           .si-bridge-center { grid-column: 1 / -1; order: -1; }
           .si-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
           .si-process-wrap { grid-template-columns: 1fr; }
@@ -1167,7 +1279,9 @@ export default function StrategyImplementationInfrastructure() {
           .si-failure-grid,
           .si-bridge-card,
           .si-blueprint-grid,
-          .si-kpi-strip { grid-template-columns: 1fr; }
+          .si-kpi-strip,
+          .si-guide-grid,
+          .si-question-grid { grid-template-columns: 1fr; }
           .si-title { max-width: none; }
           .si-callout { font-size: 16px; max-width: none; }
           .si-bridge-center { order: 0; }
@@ -1209,10 +1323,12 @@ export default function StrategyImplementationInfrastructure() {
       <div className="si-shell">
         <header className="si-hero" id="top">
           <div className="si-topbar">
-            <div>
-              <div className="si-course-meta">STRT 6200 · Strategy Implementation · Professor Enright</div>
+            <div className="si-meta-grid">
+              <div className="si-course-meta">STRT 6200 · Session 13 · April 8, 2026 · Strategy Implementation</div>
+              <div className="si-course-meta">Built from the current distilled prep text, Session 1, Chapters 1 to 3, and recurring case anchors.</div>
             </div>
           </div>
+          <div className="si-header-bar" aria-hidden="true" />
 
           <div className="si-hero-grid">
             <div className="si-hero-copy">
@@ -1347,7 +1463,32 @@ export default function StrategyImplementationInfrastructure() {
                 />
               </div>
             </div>
-          </section>
+
+            <div className="si-mini-note" style={{ marginTop: 12 }}>
+              <Icon name="people" size={18} stroke={theme.plum} />
+              <div className="si-body">
+                <LangText
+                  mode={mode}
+                  text={T(
+                    "Very few people are strong at analysis, leadership, action, and disciplined follow-through all at once. That is why leading complex firms strategically is treated as a special managerial challenge.",
+                    "極少人能同時擅長分析、領導、行動與有紀律的後續落地。這就是為甚麼策略性地帶領複雜企業，被視為一種特殊的管理挑戰。"
+                  )}
+                />
+              </div>
+            </div>
+          
+            <div style={{ marginTop: 16 }}>
+              <div className="si-micro-eyebrow"><LangText text={T("Listening frame for class", "今晚聽課框架")} mode={mode} /></div>
+              <div className="si-question-grid">
+                {listeningFrame.map((item, index) => (
+                  <ToneCard key={item.en} tone={index % 2 === 0 ? "teal" : "plum"}>
+                    <div className="si-kpi-label"><LangText text={T(`Question ${index + 1}`, `問題 ${index + 1}`)} mode={mode} /></div>
+                    <p className="si-body"><LangText text={item} mode={mode} /></p>
+                  </ToneCard>
+                ))}
+              </div>
+            </div>
+</section>
 
           <section className="si-section" id="core">
             <SectionTitle
@@ -1370,7 +1511,20 @@ export default function StrategyImplementationInfrastructure() {
             <div style={{ marginTop: 16 }}>
               <BridgeDiagram mode={mode} />
             </div>
-          </section>
+          
+            <div className="si-mini-note" style={{ marginTop: 16 }}>
+              <Icon name="bridge" size={18} stroke={theme.teal} />
+              <div className="si-body">
+                <LangText
+                  mode={mode}
+                  text={T(
+                    "Strategy is also an integration problem. Internal alignment means activities, resources, knowledge, structure, and control fit each other. External alignment means what the firm offers fits what will succeed in the market.",
+                    "策略同時也是整合問題。內部對齊，是活動、資源、知識、結構與控制彼此契合。外部對齊，則是企業提供物與市場上真正能成功的東西彼此契合。"
+                  )}
+                />
+              </div>
+            </div>
+</section>
           <section className="si-section" id="leaders">
             <SectionTitle
               eyebrow="Leadership and judgment"
@@ -1414,7 +1568,19 @@ export default function StrategyImplementationInfrastructure() {
                 ))}
               </div>
             </div>
-          </section>
+
+            <div style={{ marginTop: 16 }} className="si-grid-2">
+              {leadershipMatrix.map((group) => (
+                <ToneCard key={group.side.en} tone={group.tone}>
+                  <div className="si-kpi-label"><LangText text={group.side} mode={mode} /></div>
+                  <div className="si-name-cloud">
+                    {group.names.map((name) => (
+                      <span key={name} className="si-chip">{name}</span>
+                    ))}
+                  </div>
+                </ToneCard>
+              ))}
+            </div></section>
 
           <section className="si-section" id="loop">
             <SectionTitle
@@ -1501,7 +1667,17 @@ export default function StrategyImplementationInfrastructure() {
                 </ToneCard>
               ))}
             </div>
-          </section>
+
+            <div style={{ marginTop: 16 }}>
+              <ToneCard tone="amber">
+                <div className="si-kpi-label"><LangText text={T("Governance-failure caution set", "治理失敗警示集合")} mode={mode} /></div>
+                <div className="si-name-cloud">
+                  {governanceFailureSet.map((name) => (
+                    <span key={name} className="si-chip">{name}</span>
+                  ))}
+                </div>
+              </ToneCard>
+            </div></section>
 
           <section className="si-section">
             <SectionTitle
@@ -1542,7 +1718,26 @@ export default function StrategyImplementationInfrastructure() {
                 <BlueprintCard key={item.title.en} item={item} index={index} mode={mode} />
               ))}
             </div>
-          </section>
+          
+            <div style={{ marginTop: 16 }} className="si-table-wrap">
+              <table className="si-table">
+                <thead>
+                  <tr>
+                    <th><LangText text={T("Implementation field", "執行欄位")} mode={mode} /></th>
+                    <th><LangText text={T("Question to answer", "必答問題")} mode={mode} /></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {longCaseChecklist.map((row) => (
+                    <tr key={row.key.en}>
+                      <td><strong><LangText text={row.key} mode={mode} /></strong></td>
+                      <td><LangText text={row.ask} mode={mode} /></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+</section>
 
           <section className="si-section" id="evidence">
             <SectionTitle
@@ -1567,7 +1762,28 @@ export default function StrategyImplementationInfrastructure() {
                 </div>
               ))}
             </div>
-          </section>
+          
+            <div style={{ marginTop: 16 }} className="si-table-wrap">
+              <table className="si-table">
+                <thead>
+                  <tr>
+                    <th><LangText text={T("Deepening source", "補強來源")} mode={mode} /></th>
+                    <th><LangText text={T("What it adds", "補進甚麼")} mode={mode} /></th>
+                    <th><LangText text={T("Use rule", "使用原則")} mode={mode} /></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {deepeningReferences.map((row) => (
+                    <tr key={row.source}>
+                      <td><strong>{row.source}</strong></td>
+                      <td><LangText text={row.focus} mode={mode} /></td>
+                      <td><LangText text={row.detail} mode={mode} /></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+</section>
 
           <section className="si-section">
             <SectionTitle
@@ -1581,14 +1797,25 @@ export default function StrategyImplementationInfrastructure() {
               icon="checklist"
             />
 
-            <div className="si-grid-3">
-              {useNotes.map((note) => (
-                <ToneCard key={note.en} tone="amber">
-                  <p className="si-body"><LangText text={note} mode={mode} /></p>
+            <div className="si-guide-grid">
+              {usageGuide.map((item) => (
+                <ToneCard key={item.stage.en} tone={item.tone}>
+                  <div className="si-kpi-label"><LangText text={item.stage} mode={mode} /></div>
+                  <p className="si-body"><LangText text={item.body} mode={mode} /></p>
                 </ToneCard>
               ))}
             </div>
-          </section>
+
+            <div style={{ marginTop: 16 }}>
+              <div className="si-micro-eyebrow"><LangText text={T("Out of scope", "不在範圍內")} mode={mode} /></div>
+              <div className="si-grid-2">
+                {outOfScope.map((item) => (
+                  <ToneCard key={item.en} tone="amber">
+                    <p className="si-body"><LangText text={item} mode={mode} /></p>
+                  </ToneCard>
+                ))}
+              </div>
+            </div></section>
 
           <section className="si-section">
             <SectionTitle
@@ -1609,6 +1836,10 @@ export default function StrategyImplementationInfrastructure() {
             </ol>
           </section>
         </main>
+
+        <footer className="si-source-foot">
+          <div className="si-course-meta">Primary base: Session 1 · Ch.1 · Ch.2 · Ch.3 · current Session 13 prep draft · recurring case materials</div>
+        </footer>
       </div>
     </div>
   );
