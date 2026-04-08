@@ -213,6 +213,50 @@ const ceoRoles = [
   T("Handling public opinion and scrutiny", "面對公眾審視與輿論壓力"),
 ];
 
+
+const leadershipExamples = [
+  {
+    title: T("Positive role references", "正面角色參照"),
+    body: T(
+      "Chapter 3 uses names such as Gates, Walton, Welch, early Eisner, Bezos, Morita, Kobayashi, Li Ka-shing, Murdoch, and Murthy to show leadership with direction, coherence, and strategic force.",
+      "第三章用 Gates、Walton、Welch、前期 Eisner、Bezos、Morita、小林宏治、李嘉誠、Murdoch、Murthy 等名字，說明有方向、有融貫性、也有策略推進力的領導。"
+    ),
+    tone: "teal",
+  },
+  {
+    title: T("Negative role references", "反面角色參照"),
+    body: T(
+      "Lay and Skilling, Holmes, and late Eisner matter because the course is not asking whether leadership exists. It is asking whether leadership is disciplined, strategically coherent, and organizationally constructive.",
+      "Lay 與 Skilling、Holmes、後期 Eisner 之所以重要，是因為課程不是在問領導力有沒有存在，而是在問它是否有紀律、是否策略上融貫、是否對組織具有建設性。"
+    ),
+    tone: "rose",
+  },
+  {
+    title: T("The public-opinion test", "公眾審視測試"),
+    body: T(
+      "Even when no law has been broken, public scrutiny can damage business prospects. That makes the CEO’s public-face role part of implementation, not a side issue.",
+      "即使沒有違法，公眾審視仍可能傷害商業前景。這代表 CEO 的公眾面孔角色本身就是執行的一部分，不是旁支話題。"
+    ),
+    tone: "amber",
+  },
+];
+
+const recurringExamples = [
+  { name: T("Disney: Eisner versus Iger", "Disney：Eisner 對 Iger"), use: T("Matched-pair contrast inside the same company", "同一家公司內的配對對比") },
+  { name: T("ETA and Swatch Group", "ETA 與 Swatch Group"), use: T("Control, dependence, and implementation constraints", "控制、依賴與執行限制") },
+  { name: T("Stitch Fix", "Stitch Fix"), use: T("Operating model and implementation discipline", "營運模式與執行紀律") },
+  { name: T("Seiko", "Seiko"), use: T("Execution choices across product and brand scope", "跨產品與品牌範圍的執行選擇") },
+  { name: T("Acer and Wistron", "Acer 與 Wistron"), use: T("Organizational redesign and strategic follow-through", "組織重設與策略後續落地") },
+  { name: T("GAFAM and Microsoft", "GAFAM 與 Microsoft"), use: T("Scale, control, and organizational carrying capacity", "規模、控制與組織承載力") },
+  { name: T("Newell", "Newell"), use: T("Positive implementation exemplar when used carefully", "審慎使用時的正向執行範例") },
+];
+
+const useNotes = [
+  T("Before class, the highest-value reading order is Decision, Tier 1 core, Tier 2 case anchors, then the listening frame.", "課前最有價值的閱讀順序，是先看核心判斷、第一層主體、第二層案例錨點，再看聽課框架。"),
+  T("In class, do not try to transcribe everything. Track new framework terms, recurring cases, and how implementation is linked to long-case expectations.", "課中不要試圖逐字抄完所有內容。應該追蹤新的框架術語、重現案例，以及教授如何把執行連回長案期待。"),
+  T("Out of scope for this page are generic statements like ‘execution matters’ without managerial substance, and marketing-course frameworks imported from other classes.", "本頁不處理沒有管理實質的空話，例如『execution 很重要』，也不引入其他課程的行銷框架。"),
+];
+
 const architectureClusters = [
   {
     icon: "compass",
@@ -349,7 +393,7 @@ const caseAnchors = [
     points: [
       T("NEC used a clearly communicated C&C architecture to coordinate competence building across the firm.", "NEC 以清楚傳達的 C&C 架構，協調整個企業的能力建構。"),
       T("GTE lacked a commonly accepted view of required competencies, and decentralization weakened focus.", "GTE 缺乏對所需能力的共同理解，分權也削弱了焦點。"),
-      T("The lesson is not abstract vision alone. It is whether the vision organizes capability acquisition and daily decisions.", "重點不只是抽象願景，而是願景是否能組織能力取得與日常決策。"),
+      T("The lesson is not abstract vision alone. It is whether the vision organizes capability acquisition and daily decisions, while also acknowledging that a broad architecture can create vulnerability to more focused rivals.", "重點不只是抽象願景，而是願景是否能組織能力取得與日常決策，同時也要承認，過於寬廣的架構也可能對更聚焦的對手形成脆弱性。"),
     ],
     tone: "teal",
   },
@@ -359,8 +403,8 @@ const caseAnchors = [
     title: T("Strategy turned into operating architecture", "策略如何轉成營運架構"),
     points: [
       T("Brand portfolio choices, manufacturing footprint shifts, distributor development, and digital channel moves all count as implementation.", "品牌組合選擇、製造布局移動、通路培養、數位渠道布局，全部都屬於執行。"),
-      T("P&G helped build suppliers, distributors, category understanding, and local managerial depth in China.", "P&G 在中國協助建立供應商、經銷體系、品類教育與本地管理深度。"),
-      T("The lesson is that execution often looks like supply chain design, channel design, talent design, and local adaptation.", "重點是，執行常常具體表現在供應鏈設計、渠道設計、人才設計與在地化調整。"),
+      T("P&G helped build suppliers, distributors, category understanding, and local managerial depth in China, including a promote-from-within system and a deeply localized management base.", "P&G 在中國協助建立供應商、經銷體系、品類教育與本地管理深度，包含內部晉升系統與高度在地化的管理基礎。"),
+      T("The lesson is that execution often looks like supply chain design, channel design, talent design, local adaptation, and the building of an organization that can export managerial talent rather than just consume it.", "重點是，執行常常具體表現在供應鏈設計、渠道設計、人才設計、在地化調整，以及建立一個不只消耗人才、還能輸出管理人才的組織。"),
     ],
     tone: "plum",
   },
@@ -421,16 +465,16 @@ const evidenceLadder = [
     tier: "Tier 2",
     label: T("Strong case anchors", "高可用性的案例錨點"),
     items: T(
-      "NEC versus GTE, P&G in China, CEO role contrasts, and governance-failure caution cases.",
-      "NEC 對 GTE、P&G 中國、CEO 角色對比，以及治理失敗警示案例。"
+      "NEC versus GTE, P&G in China, governance-failure caution cases, Disney Eisner versus Iger, ETA and Swatch Group, Stitch Fix, Seiko, Acer and Wistron, and GAFAM versus Microsoft as recurring implementation references.",
+      "NEC 對 GTE、P&G 中國、治理失敗警示案例，以及 Disney 的 Eisner 對 Iger、ETA 與 Swatch Group、Stitch Fix、Seiko、Acer 與 Wistron、GAFAM 對 Microsoft 這些反覆出現的執行參照。"
     ),
   },
   {
     tier: "Tier 3",
     label: T("Use carefully as deepening material", "可用來深化，但要審慎"),
     items: T(
-      "Supplementary control-system language and broader recurring examples that help interpretation but are not the primary anchor for this page.",
-      "補充性的控制系統語言與更廣泛的反覆案例，可幫助詮釋，但不是本頁的第一主錨。"
+      "Prahalad and Hamel on organizational pathologies, Collis and Montgomery on financial versus operating control, and Newell as a positive exemplar that can deepen interpretation when used carefully.",
+      "Prahalad 與 Hamel 對組織病灶的補強、Collis 與 Montgomery 對財務控制與營運控制的區分，以及 Newell 這類正向範例，能在審慎使用時深化理解，但不是本頁的第一主錨。"
     ),
   },
 ];
@@ -565,6 +609,7 @@ export default function StrategyImplementationInfrastructure() {
     () => [
       { id: "overview", label: T("Core idea", "核心觀念") },
       { id: "core", label: T("Architecture", "執行架構") },
+      { id: "leaders", label: T("Leadership", "領導判準") },
       { id: "loop", label: T("Process loop", "流程循環") },
       { id: "control", label: T("Control fit", "管控契合") },
       { id: "cases", label: T("Case anchors", "案例錨點") },
@@ -577,6 +622,7 @@ export default function StrategyImplementationInfrastructure() {
   return (
     <div className="si-root">
       <style>{`
+        @import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Noto+Serif+TC:wght@400;600;700&display=swap");
         :root {
           color-scheme: light;
         }
@@ -602,7 +648,7 @@ export default function StrategyImplementationInfrastructure() {
           min-height: 100vh;
           background: var(--bg);
           color: var(--ink);
-          font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          font-family: "Source Serif 4", "Noto Serif TC", Georgia, serif;
           line-height: 1.55;
         }
         .si-root a { color: inherit; text-decoration: none; }
@@ -1090,7 +1136,7 @@ export default function StrategyImplementationInfrastructure() {
           display: block;
           min-width: 0;
         }
-        .lang-zh { margin-top: 6px; color: var(--muted); }
+        .lang-zh { margin-top: 6px; color: var(--muted); font-family: "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif; }
 
         @media (max-width: 1100px) {
           .si-hero-grid,
@@ -1181,8 +1227,8 @@ export default function StrategyImplementationInfrastructure() {
                   <LangText
                     mode={mode}
                     text={T(
-                      "A reader-facing guide to what this session is really about, what most summaries miss, and how to carry the logic into long-case recommendations.",
-                      "一份面向讀者的導覽，聚焦這堂課真正的主題、多數整理常漏掉的部分，以及如何把這套邏輯帶進長案建議。"
+                      "A complete reader-facing guide built from the distilled prep text and course files, designed to keep the original substance while making the logic easier to read and use.",
+                      "一份面向讀者的完整導覽，直接建立在已濃縮的備課原文與課程檔案之上，在不減損原有內容密度的前提下，讓整體邏輯更容易閱讀、理解與使用。"
                     )}
                   />
                 </p>
@@ -1325,6 +1371,51 @@ export default function StrategyImplementationInfrastructure() {
               <BridgeDiagram mode={mode} />
             </div>
           </section>
+          <section className="si-section" id="leaders">
+            <SectionTitle
+              eyebrow="Leadership and judgment"
+              title={T("Why leadership is not a decorative add-on", "為甚麼領導力不是裝飾性附加項") }
+              body={T(
+                "The source text did not treat CEO roles as filler. It treated them as part of implementation logic, because leadership decides direction, handles uncertainty, sets standards, and faces the public when execution is tested.",
+                "原始備課稿並沒有把 CEO 角色當成填充內容，而是把它放進執行邏輯本體，因為領導者要決定方向、處理不確定性、設定標準，並在執行受考驗時面對公眾。"
+              )}
+              mode={mode}
+              icon="compass"
+            />
+
+            <div className="si-grid-2">
+              <ToneCard tone="teal">
+                <Badge tone="teal">CEO roles from Chapter 3</Badge>
+                <ul className="si-bullets si-tight-list" style={{ marginTop: 10 }}>
+                  {ceoRoles.map((role) => (
+                    <li key={role.en}><LangText text={role} mode={mode} /></li>
+                  ))}
+                </ul>
+                <div className="si-mini-note" style={{ marginTop: 12 }}>
+                  <Icon name="warning" size={18} stroke={theme.amber} />
+                  <div className="si-body">
+                    <LangText
+                      mode={mode}
+                      text={T(
+                        "One of Enright’s sharpest lines belongs here: the first lemming off the cliff may be a great leader, but is a lousy strategist.",
+                        "Enright 很尖銳的一句話就放在這裡理解：第一隻跳下懸崖的旅鼠也許是 great leader，但卻是 lousy strategist。"
+                      )}
+                    />
+                  </div>
+                </div>
+              </ToneCard>
+
+              <div className="si-grid-3">
+                {leadershipExamples.map((item) => (
+                  <ToneCard key={item.title.en} tone={item.tone}>
+                    <h3 className="si-h4"><LangText text={item.title} mode={mode} /></h3>
+                    <p className="si-body" style={{ marginTop: 8 }}><LangText text={item.body} mode={mode} /></p>
+                  </ToneCard>
+                ))}
+              </div>
+            </div>
+          </section>
+
           <section className="si-section" id="loop">
             <SectionTitle
               eyebrow="Strategy process"
@@ -1412,6 +1503,28 @@ export default function StrategyImplementationInfrastructure() {
             </div>
           </section>
 
+          <section className="si-section">
+            <SectionTitle
+              eyebrow="Additional recurring references"
+              title={T("Other examples that the source text said still matter", "原始備課稿中仍應保留的其他反覆參照") }
+              body={T(
+                "These examples were not the first layer of the page, but they were explicitly retained in the source text as useful recurring references rather than disposable extras.",
+                "這些例子不是頁面的第一層主體，但原始備課稿明確把它們保留下來，作為有用的反覆參照，而不是可隨意刪除的附加物。"
+              )}
+              mode={mode}
+              icon="eye"
+            />
+
+            <div className="si-grid-3">
+              {recurringExamples.map((item) => (
+                <ToneCard key={item.name.en} tone="plum">
+                  <h3 className="si-h4"><LangText text={item.name} mode={mode} /></h3>
+                  <p className="si-body" style={{ marginTop: 8 }}><LangText text={item.use} mode={mode} /></p>
+                </ToneCard>
+              ))}
+            </div>
+          </section>
+
           <section className="si-section" id="application">
             <SectionTitle
               eyebrow="Long-case use"
@@ -1452,6 +1565,27 @@ export default function StrategyImplementationInfrastructure() {
                     <p className="si-body" style={{ marginTop: 8 }}><LangText text={row.items} mode={mode} /></p>
                   </div>
                 </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="si-section">
+            <SectionTitle
+              eyebrow="Reader use and boundaries"
+              title={T("How to use the page without flattening the course logic", "如何使用這一頁，同時不把課程邏輯壓扁") }
+              body={T(
+                "The source text also contained usage guidance and scope boundaries. They matter because they prevent this page from turning into generic advice or cross-course framework mixing.",
+                "原始備課稿也包含使用指引與範圍界線。這些內容之所以重要，是因為它們能防止本頁滑向空泛建議，或混入其他課程框架。"
+              )}
+              mode={mode}
+              icon="checklist"
+            />
+
+            <div className="si-grid-3">
+              {useNotes.map((note) => (
+                <ToneCard key={note.en} tone="amber">
+                  <p className="si-body"><LangText text={note} mode={mode} /></p>
+                </ToneCard>
               ))}
             </div>
           </section>
